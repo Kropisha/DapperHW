@@ -14,7 +14,7 @@ namespace DapperHW
             do
             {
                 Console.SetCursorPosition(0, 0);
-                Enum.TryParse(this.ShowMenu("    Welcome to the dapper task!       ").ToString(), out action);
+                Enum.TryParse(this.ShowMenu("    Welcome to the dapper task!       ").ToString(), out action); // Note: Please read about offset)
                 Console.WriteLine();
                 Console.ResetColor();
 

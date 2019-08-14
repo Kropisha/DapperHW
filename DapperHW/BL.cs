@@ -94,9 +94,9 @@ namespace DapperHW
                 int model = int.Parse(Console.ReadLine());
                 Console.WriteLine("Enter the product marker: ");
                 char marker = char.Parse(Console.ReadLine());
-                Console.WriteLine("Enter the product type: ");
+                Console.WriteLine("Enter the product type: "); // Note: We can simplify syntaxis if we create extesion method for writing string to the console.
                 string type = Console.ReadLine();
-                data.Update(new Product()
+                data.Update(new Product()  // Note: Here you could use constructor for Product 
                 {
                     Maker = marker,
                     Model = model,

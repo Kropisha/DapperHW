@@ -12,10 +12,10 @@ namespace DapperHW
 
         public List<Product> GetProducts()
         {
-            List<Product> products = new List<Product>();
+            List<Product> products = new List<Product>(); // Note: You can skip 'List<Product>' if you specefy this type in right part. 
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                products = db.Query<Product>("SELECT * FROM Product").ToList();
+                products = db.Query<Product>("SELECT * FROM Product").ToList(); // Note: Try not use select all 
             }
             return products;
         }
@@ -25,7 +25,7 @@ namespace DapperHW
             Product product = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                product = db.Query<Product>("SELECT * FROM Product WHERE Model = @model", new { model }).FirstOrDefault();
+                product = db.Query<Product>("SELECT * FROM Product WHERE Model = @model", new { model }).FirstOrDefault(); // Note: Why did you create the redundant variebel (Product)?
             }
             return product;
         }
@@ -53,7 +53,7 @@ namespace DapperHW
             using (IDbConnection db = new SqlConnection(connectionString))
             {
                 var sqlQuery = "DELETE FROM Product WHERE Model = @Model";
-                db.Execute(sqlQuery, new { model });
+                db.Execute(sqlQuery, new { model }); // Note: Here you can just insert model without 'new'
             }
         }
     }
