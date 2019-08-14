@@ -8,7 +8,8 @@ namespace DapperHW
 {
     class Data
     {
-        string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=computer;Integrated Security=True";
+        private string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=computer;Integrated Security=True";
+
         public List<Product> GetProducts()
         {
             List<Product> products = new List<Product>();
@@ -29,15 +30,13 @@ namespace DapperHW
             return product;
         }
 
-        public Product Create(Product product)
+        public void Create(Product product)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
                 var sqlQuery = "INSERT INTO Product (Maker, Model, Type) VALUES(@Maker, @Model, @Type); SELECT CAST(SCOPE_IDENTITY() as int)";
-                int productId = db.Query<int>(sqlQuery, product).FirstOrDefault();
-                product.Model = productId;
+                db.Execute(sqlQuery, product);
             }
-            return product;
         }
 
         public void Update(Product product)

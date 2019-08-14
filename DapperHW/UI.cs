@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
 
 namespace DapperHW
 {
@@ -54,7 +51,7 @@ namespace DapperHW
             while (action != UsersAction.Quit);
         }
 
-        public char ShowMenu(string type)
+        private char ShowMenu(string type)
         {
             Console.ResetColor();
             Console.Clear();
